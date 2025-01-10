@@ -3,6 +3,7 @@ package com.example.hospitalmanagement.service.impl;
 import com.example.hospitalmanagement.mapper.UserMapper;
 import com.example.hospitalmanagement.pojo.User;
 import com.example.hospitalmanagement.service.UserService;
+import com.example.hospitalmanagement.util.Md5Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -38,10 +39,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void register(String username, String password, String email, String phone) {
+    public void register(String username, String password, String email, String phone,String name,Character gender) {
+        System.out.println(password);
         String md5String = Md5Util.getMD5String(password);
-        userMapper.add(username, md5String, email, phone);
-        User newUser = userMapper.findByUserName(username);
-        userMapper.addUserRole(newUser.getId());
+        userMapper.add(username, md5String, email, phone,name,gender);
     }
 }

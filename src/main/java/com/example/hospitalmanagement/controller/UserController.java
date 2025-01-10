@@ -21,6 +21,7 @@ public class UserController {
     private StringRedisTemplate stringRedisTemplate;
     @PostMapping("/register")
     public Result register(@RequestBody User user){
+
         // 检查用户名是否已存在
         if (userService.findByUserName(user.getUsername()) != null) {
             return Result.failed("用户名已存在");
@@ -34,8 +35,8 @@ public class UserController {
             return Result.failed("手机号已存在");
         }
         // 注册用户
-        userService.register(user.getUsername(), user.getPassword(), user.getEmail(), user.getPhone());
+        userService.register(user.getUsername(), user.getPassword(), user.getEmail(), user.getPhone(),user.getName(),user.getGender());
         return Result.success();
     }
-    }
+
 }

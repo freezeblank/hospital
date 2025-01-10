@@ -12,5 +12,5 @@ public interface UserService {
     User findByPhoneNumber(String phone);
 
 
-    void register(String username, String password, String email, String phone);
+    void register(String username, String password, String email, String phone,String name,Character gender);
 }
